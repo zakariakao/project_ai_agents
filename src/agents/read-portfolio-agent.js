@@ -2,11 +2,14 @@ import {
   formatPortfolioSummary,
   readPortfolio,
   summarizePortfolio,
+  validatePortfolio,
 } from "../portfolio.js";
 import { addCompleted } from "../utils.js";
 
 export async function readPortfolioAgent(state) {
-  const portfolio = await readPortfolio(state.portfolioPath);
+  const portfolio = state.portfolioInput
+    ? validatePortfolio(state.portfolioInput)
+    : await readPortfolio(state.portfolioPath);
   const summary = summarizePortfolio(portfolio);
 
   return {

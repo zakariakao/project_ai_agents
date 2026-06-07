@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A simple investment portfolio analysis powered by multiple AI agents."
+    />
+    <title>Portfolio Agent Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <nav class="topbar">
+          <a class="brand" href="/">
+            <span class="brand-mark">PA</span>
+            <span>Portfolio Agent Studio</span>
+          </a>
+          <div class="status-pill" id="api-status">
+            <span class="status-dot"></span>
+            Checking service
+          </div>
+        </nav>
+
+        <div class="hero-copy">
+          <p class="eyebrow">YOUR PERSONAL INVESTMENT REVIEW</p>
+          <h1>Understand your investments.</h1>
+          <p>
+            Enter the investments you own. Our analysis team will research the
+            market and prepare a clear report with practical recommendations.
+          </p>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <section class="panel input-panel">
+          <div class="section-heading">
+            <div>
+              <p class="step-label">STEP 1</p>
+              <h2>Tell us about your investments</h2>
+            </div>
+            <button class="text-button" type="button" id="load-sample">
+              Load example
+            </button>
+          </div>
+
+          <form id="analysis-form">
+            <div class="form-section">
+              <label for="analysis-goal">What would you like to improve?</label>
+              <select id="analysis-goal" name="analysis-goal">
+                <option value="complete">Give me a complete portfolio review</option>
+                <option value="risk">Help me reduce risk</option>
+                <option value="growth">Help me find growth opportunities</option>
+                <option value="diversification">Help me diversify my investments</option>
+              </select>
+            </div>
+
+            <div class="holdings-heading">
+              <div>
+                <p class="step-label">YOUR INVESTMENTS</p>
+                <p class="helper-text">Add each stock or investment you currently own.</p>
+              </div>
+              <button class="secondary-button" type="button" id="add-holding">
+                + Add investment
+              </button>
+            </div>
+
+            <div class="holdings-list" id="holdings-list"></div>
+
+            <div class="portfolio-total">
+              <span>Estimated amount invested</span>
+              <strong id="portfolio-total">$0.00</strong>
+            </div>
+
+            <button class="primary-button" type="submit" id="analyze-button">
+              <span>Analyze my investments</span>
+              <span class="button-arrow">&rarr;</span>
+            </button>
+          </form>
+
+          <p class="error-message" id="error-message" hidden></p>
+        </section>
+
+        <section class="panel result-panel">
+          <div class="result-actions">
+            <button class="text-button" type="button" id="download-report" hidden>
+              Download report
+            </button>
+          </div>
+
+          <div class="empty-state" id="empty-state">
+            <span class="empty-symbol">&nearr;</span>
+            <h3>Your report will appear here</h3>
+            <p>Add your investments, then select "Analyze my investments".</p>
+          </div>
+
+          <div class="loading-state" id="loading-state" hidden>
+            <div class="loader"></div>
+            <h3>We are preparing your report</h3>
+            <p>This can take a moment while we review your investments and research the market.</p>
+          </div>
+
+          <div class="report-view" id="report-view" hidden>
+            <div class="summary-card">
+              <p class="step-label">YOUR PORTFOLIO AT A GLANCE</p>
+              <pre id="portfolio-summary"></pre>
+            </div>
+            <article class="report-content" id="report-content"></article>
+            <p class="report-path" id="report-path"></p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

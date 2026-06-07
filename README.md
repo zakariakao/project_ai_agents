@@ -50,7 +50,33 @@ TAVILY_API_KEY=...
 
 ## Run
 
-Run the default full analysis against the included sample portfolio:
+### Web interface
+
+Start the local web interface:
+
+```powershell
+npm run web
+```
+
+Then open:
+
+```text
+http://127.0.0.1:3000
+```
+
+From the page you can:
+
+- Edit the analysis question.
+- Add investments with simple form inputs: symbol, sector, quantity, price, and purchase date.
+- Run the multi-agent workflow.
+- Read the generated report in the browser.
+- Download the report as Markdown.
+
+The server also saves generated reports under `reports/`.
+
+### Terminal mode
+
+You can still run the default full analysis from the terminal:
 
 ```powershell
 npm run analyze

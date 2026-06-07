@@ -13,6 +13,15 @@ export const PortfolioItemSchema = z.object({
 
 export const PortfolioSchema = z.array(PortfolioItemSchema).min(1);
 
+export function validatePortfolio(value) {
+  const result = PortfolioSchema.safeParse(value);
+  if (!result.success) {
+    throw new Error(`Portfolio validation failed:\n${z.prettifyError(result.error)}`);
+  }
+
+  return result.data;
+}
+
 export async function readPortfolio(portfolioPath) {
   const absolutePath = resolve(portfolioPath);
   const raw = await readFile(absolutePath, "utf8");
@@ -24,12 +33,7 @@ export async function readPortfolio(portfolioPath) {
     throw new Error(`Portfolio is not valid JSON: ${error.message}`);
   }
 
-  const result = PortfolioSchema.safeParse(parsed);
-  if (!result.success) {
-    throw new Error(`Portfolio validation failed:\n${z.prettifyError(result.error)}`);
-  }
-
-  return result.data;
+  return validatePortfolio(parsed);
 }
 
 export function summarizePortfolio(portfolio) {

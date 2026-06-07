@@ -18,6 +18,7 @@ import { PortfolioItemSchema } from "./portfolio.js";
 const GraphState = new StateSchema({
   query: z.string().min(1),
   portfolioPath: z.string().min(1),
+  portfolioInput: z.unknown().optional(),
   outputPath: z.string().default("reports/portfolio-report.md"),
   portfolio: z.array(PortfolioItemSchema).default(() => []),
   portfolioSummary: z.string().default(""),

@@ -1,7 +1,6 @@
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
-import { assertApiKeys, getConfig } from "./config.js";
-import { createPortfolioGraph } from "./graph.js";
+import { runPortfolioAnalysis } from "./analysis.js";
 
 const DEFAULT_QUERY =
   "Analyze this portfolio using current market information and write a detailed report with actionable recommendations.";
@@ -35,21 +34,15 @@ export function parseArgs(args) {
 }
 
 async function main() {
-  assertApiKeys();
   const args = parseArgs(process.argv.slice(2));
-  const config = getConfig();
-  const graph = createPortfolioGraph({ modelName: config.openAiModel });
 
   console.log(`Analyzing ${resolve(args.portfolio)}...`);
 
-  const result = await graph.invoke(
-    {
-      query: args.query,
-      portfolioPath: args.portfolio,
-      outputPath: args.output,
-    },
-    { recursionLimit: 15 },
-  );
+  const result = await runPortfolioAnalysis({
+    query: args.query,
+    portfolioPath: args.portfolio,
+    outputPath: args.output,
+  });
 
   console.log(`Completed agents: ${result.completed.join(" -> ")}`);
   if (result.report) {

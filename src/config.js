@@ -6,6 +6,13 @@ export function getConfig() {
   };
 }
 
+export function getApiKeyStatus() {
+  return {
+    openAi: Boolean(process.env.OPENAI_API_KEY),
+    tavily: Boolean(process.env.TAVILY_API_KEY),
+  };
+}
+
 export function assertApiKeys() {
   const missing = ["OPENAI_API_KEY", "TAVILY_API_KEY"].filter(
     (name) => !process.env[name],
