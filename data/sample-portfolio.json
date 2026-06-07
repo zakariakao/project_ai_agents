@@ -1,0 +1,34 @@
+[
+  {
+    "symbol": "AAPL",
+    "sector": "Technology",
+    "quantity": 13,
+    "purchase_price": 120.57,
+    "total_invested": 1567.41,
+    "purchase_date": "2022-03-12"
+  },
+  {
+    "symbol": "MSFT",
+    "sector": "Technology",
+    "quantity": 8,
+    "purchase_price": 285.4,
+    "total_invested": 2283.2,
+    "purchase_date": "2023-01-20"
+  },
+  {
+    "symbol": "JNJ",
+    "sector": "Healthcare",
+    "quantity": 10,
+    "purchase_price": 158.25,
+    "total_invested": 1582.5,
+    "purchase_date": "2022-09-05"
+  },
+  {
+    "symbol": "V",
+    "sector": "Financial Services",
+    "quantity": 6,
+    "purchase_price": 230.1,
+    "total_invested": 1380.6,
+    "purchase_date": "2024-02-14"
+  }
+]
