@@ -12,8 +12,6 @@ const HOST = process.env.HOST || "127.0.0.1";
 const PORT = Number(process.env.PORT || 3000);
 const PUBLIC_FILES = new Map([
   ["/", "public/index.html"],
-  ["/app.js", "public/app.js"],
-  ["/styles.css", "public/styles.css"],
 ]);
 const CONTENT_TYPES = {
   ".html": "text/html; charset=utf-8",

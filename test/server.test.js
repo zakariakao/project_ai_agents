@@ -20,10 +20,13 @@ test("web server serves the interface and API status", async () => {
     assert.equal(pageResponse.status, 200);
     const page = await pageResponse.text();
     assert.match(page, /Portfolio Agent Studio/);
-    assert.match(page, /id="loading-state" hidden/);
-
-    const stylesResponse = await fetch(`${baseUrl}/styles.css`);
-    assert.match(await stylesResponse.text(), /\[hidden\]\s*\{\s*display: none !important;/);
+    assert.match(page, /id="result-loading" hidden/);
+    assert.match(page, /<style>/);
+    assert.match(page, /<script>/);
+    assert.match(page, /How It Works/);
+    assert.match(page, /Start Free Analysis/);
+    assert.match(page, /Most Popular/);
+    assert.match(page, /id="contact-form"/);
 
     const statusResponse = await fetch(`${baseUrl}/api/status`);
     assert.equal(statusResponse.status, 200);

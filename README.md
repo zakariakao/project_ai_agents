@@ -73,6 +73,8 @@ From the page you can:
 - Download the report as Markdown.
 
 The server also saves generated reports under `reports/`.
+The complete frontend, including its CSS and JavaScript, is contained in
+`public/index.html`.
 
 ### Terminal mode
 
